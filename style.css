@@ -26,7 +26,8 @@ body {
 }
 
 .wrapper {
-  width: 40rem;
+  width: 90%;
+  max-width: 60rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -71,16 +72,6 @@ body {
   color: #eb4d4d;
   font-weight: 500;
 }
-/*
-.active .player-name::after {
-  content: "\2022";
-  font-size: 2.5rem;
-  position: absolute;
-  color: #eb4d4d;
-  top: -0.5rem;
-  right: 1rem;
-  z-index: 1;
-}*/
 
 .player-current-box {
   background-color: #eb4d4d;
