@@ -4,6 +4,10 @@ var roundScore = 0;
 var diceNumber;
 
 var diceDom = document.querySelector(".dice");
+var player0 = document.querySelector(".player-0-panel");
+var player1 = document.querySelector(".player-1-panel");
+var rollButton = document.querySelector(".btn-roll");
+var holdButton = document.querySelector(".btn-hold");
 
 function changePlayer() {
   roundScore = 0;
@@ -18,8 +22,8 @@ function changePlayer() {
 }
 
 function endGame() {
-  document.querySelector(".btn-roll").style.display = "none";
-  document.querySelector(".btn-hold").style.display = "none";
+  rollButton.style.display = "none";
+  holdButton.style.display = "none";
   document
     .querySelector(".player-" + activePlayer + "-panel")
     .classList.add("winner");
@@ -30,23 +34,23 @@ function endGame() {
 function beginGame() {
   document.getElementById("name-" + activePlayer).textContent =
     "Player " + (activePlayer + 1);
-  document.querySelector(".player-0-panel").classList.remove("winner");
-  document.querySelector(".player-1-panel").classList.remove("winner");
+  player0.classList.remove("winner");
+  player1.classList.remove("winner");
   document.getElementById("score-0").textContent = 0;
   document.getElementById("score-1").textContent = 0;
   document.getElementById("current-0").textContent = 0;
   document.getElementById("current-1").textContent = 0;
-  document.querySelector(".btn-roll").style.display = "block";
-  document.querySelector(".btn-hold").style.display = "block";
+  rollButton.style.display = "block";
+  holdButton.style.display = "block";
   diceDom.style.display = "none";
   activePlayer = 0;
   scores = [0, 0];
   roundScore = 0;
-  document.querySelector(".player-0-panel").classList.add("active");
-  document.querySelector(".player-1-panel").classList.remove("active");
+  player0.classList.add("active");
+  player1.classList.remove("active");
 }
 
-document.querySelector(".btn-roll").addEventListener("click", function () {
+rollButton.addEventListener("click", function () {
   diceNumber = Math.ceil(Math.random() * 6);
   diceDom.src = "dice-" + diceNumber + ".png";
   diceDom.style.display = "block";
@@ -57,7 +61,8 @@ document.querySelector(".btn-roll").addEventListener("click", function () {
   }
 });
 
-document.querySelector(".btn-hold").addEventListener("click", function () {
+holdButton.addEventListener("click", function () {
+  diceDom.style.display = "none";
   scores[activePlayer] += roundScore;
   document.getElementById("score-" + activePlayer).textContent =
     scores[activePlayer];
