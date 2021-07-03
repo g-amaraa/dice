@@ -5,8 +5,6 @@ var diceNumber;
 
 var diceDom = document.querySelector(".dice");
 
-beginGame();
-
 function changePlayer() {
   roundScore = 0;
   document.getElementById("current-" + activePlayer).textContent = 0;
@@ -20,14 +18,20 @@ function changePlayer() {
 }
 
 function endGame() {
-  /**/
   document.querySelector(".btn-roll").style.display = "none";
   document.querySelector(".btn-hold").style.display = "none";
+  document
+    .querySelector(".player-" + activePlayer + "-panel")
+    .classList.add("winner");
   document.getElementById("name-" + activePlayer).textContent =
     "Player " + (activePlayer + 1) + " WON!";
 }
 
 function beginGame() {
+  document.getElementById("name-" + activePlayer).textContent =
+    "Player " + (activePlayer + 1);
+  document.querySelector(".player-0-panel").classList.remove("winner");
+  document.querySelector(".player-1-panel").classList.remove("winner");
   document.getElementById("score-0").textContent = 0;
   document.getElementById("score-1").textContent = 0;
   document.getElementById("current-0").textContent = 0;
@@ -64,3 +68,5 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
 document.querySelector(".btn-new").addEventListener("click", function () {
   beginGame();
 });
+
+beginGame();
